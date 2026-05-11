@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model ScoutEmail {
+  id             Int      @id @default(autoincrement())
+  companyName    String
+  position       String
+  expectedSalary String?
+  salaryClass    String   @default("unknown")
+  jobDescription String
+  agentName      String
+  isMatch        Boolean  @default(false)
+  rawSubject     String
+  gmailMessageId String   @unique
+  gmailThreadId  String
+  receivedAt     DateTime
+  createdAt      DateTime @default(now())
+}
+
+model SyncState {
+  id        Int      @id @default(1)
+  historyId String
+  updatedAt DateTime @updatedAt
+}

@@ -1,26 +1,48 @@
 {
-  "name": "scout-board-init",
+  "name": "scout-board",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=25.9.0",
+    "pnpm": ">=10"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "biome check --write src/ scripts/",
+    "format:check": "biome check src/ scripts/",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio",
+    "auth:setup": "pnpm dlx ts-node --project tsconfig.scripts.json scripts/auth.ts",
+    "test": "jest"
   },
   "dependencies": {
+    "@google/genai": "^2.0.1",
+    "@libsql/client": "^0.17.3",
+    "@prisma/adapter-libsql": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "google-auth-library": "^10.6.2",
+    "googleapis": "^171.4.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.19.40",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "jest": "^30.4.2",
+    "prisma": "^7.8.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "ts-jest": "^29.4.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
